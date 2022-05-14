@@ -1,35 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getAllTodos } from './redux/actions/todoAction';
+import React from 'react';
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+import {
+  Home,
+} from './pages';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllTodos());
-  }, []);
-
-  const todoList = useSelector(state => state.todo.todoList);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" element={<Home />}>
+        <Home />
+      </Route>
+    </Switch>
   );
 }
 
