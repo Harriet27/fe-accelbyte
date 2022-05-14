@@ -25,12 +25,11 @@ const Home = () => {
     <div className='home-root'>
       <Header />
       <Search
-        placeholder="input search text"
-        allowClear
+        placeholder="Search Here..."
         onChange={debounceOnChange}
         onSearch={onSearch}
         enterButton
-        style={{ width: 300 }}
+        style={{ width: window.innerWidth < 500 ? null : 350 }}
       />
       <div>
         Searched Keyword: {searchVal}
