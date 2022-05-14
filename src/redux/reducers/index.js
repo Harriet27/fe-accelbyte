@@ -1,16 +1,14 @@
-// import { combineReducers } from "redux";
-// import { todoReducer } from "./todoReducer";
-// import { photoReducer } from "./photoReducer";
-
-// export default combineReducers({
-//     todo: todoReducer,
-//     photo: photoReducer,
-// });
-
+import { configureStore } from "@reduxjs/toolkit";
 import { todoReducer } from "./todoReducer";
 import { photoReducer } from "./photoReducer";
 
+const reducerStore = configureStore({
+    reducer: {
+        todo: todoReducer,
+        photo: photoReducer,
+    },
+});
+
 export {
-    todoReducer,
-    photoReducer,
+    reducerStore,
 };
