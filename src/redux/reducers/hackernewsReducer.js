@@ -1,24 +1,24 @@
 import * as t from "../types";
 
 const INTITAL_STATE = {
-    todoList: [],
+    topStoriesList: [],
     loading : false,
 };
 
-export const todoReducer = (state =  INTITAL_STATE , action) => {
+export const hackernewsReducer = (state =  INTITAL_STATE , action) => {
     switch (action.type) {
-        case t.todo_start:
+        case t.HACKERNEWS_START:
             return {
                 ...state,
                 loading: true,
             };
-        case t.todo_success:
+        case t.HACKERNEWS_SUCCESS:
             return {
                 ...state,
-                todoList: action.payload,
+                topStoriesList: action.payload,
                 loading: false,
             };
-        case t.todo_failed:
+        case t.HACKERNEWS_FAILED:
             return {
                 ...state,
                 loading: false,

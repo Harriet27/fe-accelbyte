@@ -2,20 +2,20 @@ import Axios from "axios";
 import * as t from "../types";
 import * as url from "../url";
 
-export const getAllPhotos = () => {
+export const getAllTopStories = () => {
     return async dispatch => {
         dispatch({
-            type: t.photos_start,
+            type: t.HACKERNEWS_START,
         });
         try {
-            let res = await Axios.get(`${url.todo_api_url}/photos`);
+            let res = await Axios.get(`${url.hackernews_api_url}/topstories.json?print=pretty`);
             dispatch({
-                type: t.photos_success,
+                type: t.HACKERNEWS_SUCCESS,
                 payload: res.data,
             });
         } catch {
             dispatch({
-                type: t.photos_failed,
+                type: t.HACKERNEWS_FAILED,
             });
         }
     };

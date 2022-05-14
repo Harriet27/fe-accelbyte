@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { todoReducer } from "./todoReducer";
-import { photoReducer } from "./photoReducer";
+import { hackernewsReducer } from "./hackernewsReducer";
 
 const reducerStore = configureStore({
     reducer: {
-        todo: todoReducer,
-        photo: photoReducer,
+        hackernews: hackernewsReducer,
     },
 });
 
