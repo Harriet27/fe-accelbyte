@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Header } from '../../components';
 import { Input } from 'antd';
 import debounce from 'lodash.debounce';
-import './home.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTopStories } from '../../redux/actions/hackernewsAction';
+import './home.css';
 
 const { Search } = Input;
 
@@ -35,7 +35,7 @@ const Home = () => {
     return topStoriesList.map((item, idx) => {
       return (
         <div key={idx} style={{ marginRight: "1rem" }}>
-          Story ID: <a href="#">{item}</a>
+          Story ID: <a href={`/items?story_id=${item}`}>{item}</a>
         </div>
       );
     });

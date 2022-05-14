@@ -1,0 +1,10 @@
+.items-root {
+  min-height: 100vh;
+  height: 100%;
+  padding: 0.5rem;
+  background-color: #F4F8F9;
+}
+
+.items-search-result {
+  margin: 1rem 0;
+}

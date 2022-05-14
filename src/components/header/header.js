@@ -5,11 +5,13 @@ import './header.css';
 const Header = () => {
   return (
     <div className='header-root'>
-      <PageHeader
-        className="site-page-header"
-        title="Accelbyte"
-        subTitle="Frontend Technical Test"
-      />
+      <a href="/">
+        <PageHeader
+          className="site-page-header"
+          title="Accelbyte"
+          subTitle="Frontend Technical Test"
+        />
+      </a>
     </div>
   );
 };

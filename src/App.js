@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import {
   Home,
+  Items,
 } from './pages';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
     <Switch>
       <Route exact path="/" element={<Home />}>
         <Home />
+      </Route>
+      <Route path="/items" element={<Items />}>
+        <Items />
       </Route>
     </Switch>
   );
