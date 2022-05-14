@@ -35,7 +35,7 @@ const Home = () => {
     return topStoriesList.map((item, idx) => {
       return (
         <div key={idx} style={{ marginRight: "1rem" }}>
-          ID: <a href="#">{item}</a>
+          Story ID: <a href="#">{item}</a>
         </div>
       );
     });
@@ -46,12 +46,19 @@ const Home = () => {
       <Header />
       <div className='home-searchBox'>
         <Search
-          placeholder="Search Here..."
+          placeholder="search story id here"
+          type="number"
           onChange={debounceOnChange}
           onSearch={onSearch}
           enterButton
           style={{ width: window.innerWidth < 500 ? null : 350 }}
         />
+        {/* <div
+          className='home-search-result'
+          style={{ display: searchVal !== "" ? "block" : "none" }}
+        >
+          <div>suggestion</div>
+        </div> */}
       </div>
       <div className='home-renderId'>
         {renderTopStoriesList()}

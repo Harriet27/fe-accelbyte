@@ -5,10 +5,20 @@
 }
 
 .home-searchBox {
-  margin-bottom: 0.5rem;
+  margin: 1rem 0;
 }
 
 .home-renderId {
   display: flex;
   flex-wrap: wrap;
+}
+
+.home-search-result {
+  background-color: white;
+  width: 350px;
+  border: 1px solid #E5E5E5;
+  border-radius: 2.5px;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  position: absolute;
 }
