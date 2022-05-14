@@ -1,7 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllTodos } from './redux/actions/todoAction';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllTodos());
+  }, []);
+
+  const todoList = useSelector(state => state.todo.todoList);
+
   return (
     <div className="App">
       <header className="App-header">
