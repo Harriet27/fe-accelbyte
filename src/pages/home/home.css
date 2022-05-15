@@ -36,6 +36,9 @@
   }
   .home-story-item {
     margin-right: 0;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .copy-to-clipboard {
+    display: none;
   }
 }
