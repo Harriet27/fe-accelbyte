@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import {
   Home,
   Items,
@@ -11,10 +8,19 @@ import {
 function App() {
   return (
     <Switch>
-      <Route exact path="/" element={<Home />}>
+      <Route
+        exact
+        path="/"
+        render={() => {
+          return (
+            <Redirect to="/story-list" />
+          )
+        }}
+      />
+      <Route path="/story-list" element={<Home />}>
         <Home />
       </Route>
-      <Route path="/items" element={<Items />}>
+      <Route path="/story-detail" element={<Items />}>
         <Items />
       </Route>
     </Switch>

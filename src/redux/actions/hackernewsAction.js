@@ -20,3 +20,22 @@ export const getAllTopStories = () => {
         }
     };
 };
+
+export const getTopStoryDetail = (id) => {
+    return async dispatch => {
+        dispatch({
+            type: t.HACKERNEWS_START,
+        });
+        try {
+            let res = await Axios.get(`${url.hackernews_api_url}/item/${id}.json?print=pretty`);
+            dispatch({
+                type: t.HACKERNEWS_DETAIL,
+                payload: res.data,
+            });
+        } catch {
+            dispatch({
+                type: t.HACKERNEWS_FAILED,
+            });
+        }
+    };
+};

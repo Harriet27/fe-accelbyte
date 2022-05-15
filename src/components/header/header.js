@@ -5,7 +5,7 @@ import './header.css';
 const Header = () => {
   return (
     <div className='header-root'>
-      <a href="/">
+      <a href="/story-list">
         <PageHeader
           className="site-page-header"
           title="Accelbyte"

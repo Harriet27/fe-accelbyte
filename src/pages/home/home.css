@@ -12,6 +12,7 @@
 .home-renderId {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .home-search-result {
