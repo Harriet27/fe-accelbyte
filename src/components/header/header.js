@@ -5,13 +5,12 @@ import './header.css';
 const Header = () => {
   return (
     <div className='header-root'>
-      <a href="/story-list">
-        <PageHeader
-          className="site-page-header"
-          title="Accelbyte"
-          subTitle="Frontend Technical Test"
-        />
-      </a>
+      <PageHeader
+        className="site-page-header"
+        title="Accelbyte"
+        subTitle="Frontend Technical Test"
+        onBack={() => window.location.href = "/story-list"}
+      />
     </div>
   );
 };

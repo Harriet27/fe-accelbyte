@@ -5,10 +5,15 @@
   background-color: #F4F8F9;
 }
 
-.items-search-result {
-  margin: 1rem;
+.items-search-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.items-detail {
+.items-search-id {
+  margin: 1rem 1rem 0 1rem;
+}
+
+.items-search-detail {
   margin: 1rem;
 }
