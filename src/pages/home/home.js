@@ -36,11 +36,21 @@ const Home = () => {
     localStorage.setItem("topStoriesList", JSON.stringify(topStoriesList));
   }
 
+  const copyToClipBoard = (item) => {
+    return navigator.clipboard.writeText(item);
+  };
+
   const renderTopStoriesList = () => {
     return topStoriesList.map((item, idx) => {
       return (
-        <div key={idx} style={{ marginRight: "1rem" }}>
-          Story ID: <a href={`/story-detail?id=${item}`}>{item}</a>
+        <div key={idx} style={{ marginRight: "1.25rem" }}>
+          Story ID: <a href={`/story-detail?id=${item}`}>{item}</a> &nbsp;
+          <span
+            className='copy-to-clipboard'
+            onClick={() => copyToClipBoard(item)}
+          >
+            📋
+          </span>
         </div>
       );
     });
@@ -80,7 +90,8 @@ const Home = () => {
           style={{ width: window.innerWidth < 500 ? null : 350 }}
         />
         <div className='home-searchBox-tips'>
-          &#x1F6C8; debounce delay of 3 seconds
+          &#x1F6C8; debounce delay of 3 seconds <br/>
+          Searched ID: <b>{searchVal}</b>
         </div>
       </div>
       <div className='home-renderId'>

@@ -9,6 +9,11 @@
   margin: 1rem 0;
 }
 
+.copy-to-clipboard {
+  cursor: pointer;
+  font-size: large;
+}
+
 .home-searchBox-tips {
   color: #969696;
   font-size: small;
