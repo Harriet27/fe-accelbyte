@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Header } from '../../components';
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 import debounce from 'lodash.debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTopStories } from '../../redux/actions/hackernewsAction';
@@ -16,24 +16,25 @@ const Home = () => {
 
   const [searchVal, setSearchVal] = useState("");
 
-  const onChangeSearch = (event) => {
-    setSearchVal(event.target.value);
-    localStorage.setItem("searchVal", event.target.value);
+  const onChangeSearchInput = (event) => {
+    const value = event.target.value;
+    setSearchVal(value);
+    localStorage.setItem("searchVal", value);
   };
 
   const debounceOnChange = useCallback(
-    debounce(onChangeSearch, 3000)
+    debounce(onChangeSearchInput, 3000)
   , []);
-
-  const onSearch = () => {
-    alert(`Searched Keyword: ${searchVal}`);
-  };
 
   useEffect(() => {
     dispatch(getAllTopStories());
   }, []);
 
   const topStoriesList = useSelector(state => state.hackernews.topStoriesList);
+
+  if (topStoriesList.length !== 0) {
+    localStorage.setItem("topStoriesList", JSON.stringify(topStoriesList));
+  }
 
   const renderTopStoriesList = () => {
     return topStoriesList.map((item, idx) => {
@@ -43,6 +44,18 @@ const Home = () => {
         </div>
       );
     });
+  };
+
+  const onSearch = () => {
+    const topStoriesLS = localStorage.getItem("topStoriesList");
+    const parsedTopStoriesLS = JSON.parse(topStoriesLS);
+    const numberedSearchVal = Number(searchVal);
+    const checkInclude = parsedTopStoriesLS.includes(numberedSearchVal);
+    if (checkInclude) {
+      window.location.href = `/story-detail?id=${searchVal}`;
+    } else {
+      message.error('The story ID you entered is not found.');
+    }
   };
 
   useEffect(() => {
@@ -66,12 +79,9 @@ const Home = () => {
           defaultValue={localStorage.getItem("searchVal") || searchVal}
           style={{ width: window.innerWidth < 500 ? null : 350 }}
         />
-        {/* <div
-          className='home-search-result'
-          style={{ display: searchVal !== "" ? "block" : "none" }}
-        >
-          <div>suggestion</div>
-        </div> */}
+        <div className='home-searchBox-tips'>
+          &#x1F6C8; debounce delay of 3 seconds
+        </div>
       </div>
       <div className='home-renderId'>
         {renderTopStoriesList()}
