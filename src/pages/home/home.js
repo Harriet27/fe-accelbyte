@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Header } from '../../components';
-import { Input, message } from 'antd';
+import { Input, message, notification } from 'antd';
 import debounce from 'lodash.debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTopStories } from '../../redux/actions/hackernewsAction';
@@ -37,14 +37,17 @@ const Home = () => {
   }
 
   const copyToClipBoard = (item) => {
-    return navigator.clipboard.writeText(item);
+    navigator.clipboard.writeText(item);
+    message.info(`Copied ID: ${item}`, 1);
   };
 
   const renderTopStoriesList = () => {
     return topStoriesList.map((item, idx) => {
       return (
-        <div key={idx} style={{ marginRight: "1.25rem" }}>
-          Story ID: <a href={`/story-detail?id=${item}`}>{item}</a> &nbsp;
+        <div key={idx} className="home-story-item">
+          Story ID: <a href={`/story-detail?id=${item}`} id="storyId">
+            {item}
+          </a> &nbsp;
           <span
             className='copy-to-clipboard'
             onClick={() => copyToClipBoard(item)}
@@ -64,7 +67,11 @@ const Home = () => {
     if (checkInclude) {
       window.location.href = `/story-detail?id=${searchVal}`;
     } else {
-      message.error('The story ID you entered is not found.');
+      notification.error({
+        message: 'Error',
+        description: 'The story ID you entered is not found.',
+        duration: 2,
+      });
     }
   };
 
@@ -90,8 +97,8 @@ const Home = () => {
           style={{ width: window.innerWidth < 500 ? null : 350 }}
         />
         <div className='home-searchBox-tips'>
-          &#x1F6C8; debounce delay of 3 seconds <br/>
-          Searched ID: <b>{searchVal}</b>
+          Debounce delay of 3 seconds <br/>
+          Searched ID: <b>{localStorage.getItem("searchVal")}</b>
         </div>
       </div>
       <div className='home-renderId'>

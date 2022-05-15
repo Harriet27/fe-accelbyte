@@ -24,3 +24,18 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
+
+.home-story-item {
+  margin-right: 1.25rem;
+  margin-bottom: 0.125rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-renderId {
+    justify-content: space-around;
+  }
+  .home-story-item {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+}
